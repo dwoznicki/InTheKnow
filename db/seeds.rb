@@ -1,26 +1,33 @@
 user1 = User.create(email: 'p@p.com', password: 'paulpaul')
 
-# Seed tags
-tags = ["Arts", "Community", "Education", "Movements", "LGBT", "Food"]
-tags.each do |tag|
-	Tag.create(subject: tag)
-end
-
 # Seed meetup data
 meetup_api = MeetupApi.new
 
-art_params = {
-	category: '1',
-	country: 'us',
-	state: 'CA',
-	city: 'San Francisco',
-	format: 'json',
-	page: '15'
+category_ids = {
+	"1" => "Arts",
+	"4" => "Community",
+	"6" => "Education",
+	"13" => "Movements",
+	"12" => "LGBT",
+	"10" => "Food",
 }
-art_events = meetup_api.open_events(art_params)
 
-art_events['results'].each do |event|
-	organization = Organization.find_or_create_by(name: event['group']['name'], url: "www.meetup.com/#{event['group']['urlname']}")
-	Message.create(body: event['name'], start_date: Time.at(event['time']), organization_id: organization.id)
+category_ids.each do |id, category|
+	params = {
+		category: id,
+		country: 'us',
+		state: 'CA',
+		city: 'San Francisco',
+		format: 'json',
+		page: '15'
+	}
+	events = meetup_api.open_events(params)
+	events['results'].each do |event|
+		organization = Organization.find_or_create_by(name: event['group']['name'], url: "www.meetup.com/#{event['group']['urlname']}")
+		message = Message.create(body: event['name'], start_date: Time.at(event['time']), organization_id: organization.id)
+		tag = Tag.find_or_create_by(subject: category)
+		message.tags << tag
+	end
 end
+
 
