@@ -11,16 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123190712) do
+ActiveRecord::Schema.define(version: 20160123210044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "message_tags", force: :cascade do |t|
+    t.integer  "message_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string   "body"
     t.date     "start_date"
-    t.date     "end_date"
     t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "organization_users", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -28,6 +41,13 @@ ActiveRecord::Schema.define(version: 20160123190712) do
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_users", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
