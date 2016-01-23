@@ -5,6 +5,13 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  resources :users do
+    get 'add_tag'
+    get 'remove_tag'
+    resources :messages, only: [:index]
+  end
+  resources :messages, only: [:new, :create]
+  resources :tags, only: [:new, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
