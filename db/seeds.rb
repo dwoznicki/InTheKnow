@@ -23,3 +23,4 @@ art_events['results'].each do |event|
 	organization = Organization.find_or_create_by(name: event['group']['name'], url: "www.meetup.com/#{event['group']['urlname']}")
 	Message.create(body: event['name'], start_date: Time.at(event['time']), organization_id: organization.id)
 end
+
