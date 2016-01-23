@@ -13,4 +13,11 @@ msg1.message_tags.create(tag_id: tag3.id)
 msg2 = Message.create(body: 'come check out the pooches at the humane society')
 msg2.message_tags.create(tag_id: tag1.id)
 
+msg3 = Message.create(body: 'adopt a cat today')
+msg3.message_tags.create(tag_id: tag1.id)
+
+
+
+
+
 
