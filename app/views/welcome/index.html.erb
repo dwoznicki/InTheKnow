@@ -1,0 +1,19 @@
+<h3>My Tags</h3>
+<% current_user.tags.each do |tag| %>
+	<p><%= tag.subject %></p>
+<% end %>
+
+<h3>Other Tags</h3>
+<% @tags.each do |tag| %>
+	<p><%= tag.subject %></p>
+<% end %>
+
+<h2>My Messages</h2>
+<% @messages.each do |message| %>
+	<div>
+		<% message.tags.each do |tag| %>
+			<%= tag.subject %>
+		<% end %>
+		<%= message.body %>
+	</div>
+<% end %>
