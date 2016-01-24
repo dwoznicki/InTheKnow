@@ -9,21 +9,15 @@
 </head>
 
 <body>
-<nav class="navbar navbar-light">
+<nav class="navbar navbar-default">
   <ul class="nav navbar-nav">
     <% if user_signed_in? %>
-    <li class="nav-item active">
-
-      <%= link_to "Profile", user_path(current_user) %>
-
+    <li><%= link_to "Profile", user_path(current_user) %>
     </li>
 
-    <li>Signed in as <%= current_user.username %>. Not you?</li>
+    <!-- <li>Signed in as <%= current_user.username %>. Not you?</li> -->
 
-    <li class="nav-item">
-
-      <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
-
+    <li><%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
     </li>
 
     <% else %>
