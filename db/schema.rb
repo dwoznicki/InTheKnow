@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160123210044) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160123210044) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "username"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
