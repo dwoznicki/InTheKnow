@@ -1,11 +1,22 @@
 <!-- common form for new & edit -->
 
 <%= form_for @message do |f|  %>
+	<div class="hidden">
+		<%= f.text_field :tag_id, id: 'hidden-tag-id' %>
+	</div>
   <%= f.label :body  %>
   <%= f.text_field :body  %>
   <br>
   <%= f.label :start_date  %>
   <%= f.date_field :start_date %>
   <br>
+  <% @tags.each do |tag| %>
+		<span class='btn btn-success', onclick='addTagToMessage(<%= tag.id %>)'><%= tag.subject %> +</span>
+  <% end %>
   <%= f.submit %>
 <% end %>
+<script type="text/javascript">
+	var addTagToMessage = function(tagId) {
+		$('#hidden-tag-id').val(tagId)
+	}
+</script>

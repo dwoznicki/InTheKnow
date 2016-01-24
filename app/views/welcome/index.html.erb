@@ -1,9 +1,17 @@
 <div class="container-fluid">
+	<div class="row">
+		<div class="text-right">
+			<%= link_to "Add a tag", new_tag_path %>
+			<%= link_to "Add a message", new_message_path %>
+		</div>
+	</div>	
 	<h3>My Tags</h3>
 	<div class="row">
 		<div class='my-tags'>
 			<% current_user.tags.each do |tag| %>
-				<span class='btn btn-default my-tag' href='<%= current_user.id %>' id='<%= tag.id %>'><%= tag.subject %> &times;</span>
+				<%= link_to user_remove_tag_path(current_user, tag_id: tag.id) do %>
+					<span class='btn btn-default'><%= tag.subject %> &times;</span>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
@@ -12,24 +20,26 @@
 	<div class="row">
 		<div class="other-tags">
 			<% @tags.each do |tag| %>
-				<span class='btn btn-success other-tag' href='<%= current_user.id %>' id='<%= tag.id %>'>
-					<%= tag.subject %> +
-				</span>
+				<%= link_to user_add_tag_path(current_user, tag_id: tag.id) do %>
+					<span class='btn btn-success'><%= tag.subject %> +</span>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
 
 	<h2>My Messages</h2>
 	<div class="row">
-		<% @messages.each do |message| %>
-			<div>
-				<% message.tags.each do |tag| %>
-					<%= tag.subject %>
-				<% end %>
-				<%= message.body %>
-			</div>
-		<% end %>
+		<div class="col-md-offset-3">
+			<% @messages.each do |message| %>
+				<div>
+					<% message.tags.each do |tag| %>
+						<%= tag.subject %>
+					<% end %>
+					<%= message.body %>
+				</div>
+			<% end %>
+		</div>
 	</div>
-	
+
 	</div>
 </div>

@@ -6,13 +6,15 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    @tags = Tag.all
   end
 
   def create
     @message = Message.new(message_params)
     respond_to do |format|
       if @message.save
-        format.html {redirect_to messages_path}
+        @message.tags << Tag.find(params[:message][:tag_id])
+        format.html {redirect_to root_path}
       else
         format.html {render 'new'}
       end
@@ -28,6 +30,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:body, :start_date)
+    params.require(:message).permit(:body, :start_date, :tag_id)
   end
 end
