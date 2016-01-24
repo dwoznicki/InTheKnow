@@ -1,7 +1,12 @@
-<!-- common form for new & edit -->
-<%= form_for @tag do |f|  %>
-  <%= f.label :subject  %>
-  <%= f.text_field :subject %>
-  <br>
-  <%= f.submit  %>
-<% end %>
+<div class="container">
+<h1>New Tag</h1>
+
+	<!-- common form for new & edit -->
+	<%= form_for @tag do |f|  %>
+	  <%= f.label :subject  %>
+	  <%= f.text_field :subject %>
+	  <br>
+	  <br>
+	  <%= f.submit  %>
+	<% end %>
+</div>
