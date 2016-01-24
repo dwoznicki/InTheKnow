@@ -1,12 +1,18 @@
 <h3>My Tags</h3>
-<% current_user.tags.each do |tag| %>
-	<p><%= tag.subject %></p>
-<% end %>
+<div class='my-tags'>
+	<% current_user.tags.each do |tag| %>
+		<span class='btn btn-default my-tag' href='<%= current_user.id %>' id='<%= tag.id %>'><%= tag.subject %> &times;</span>
+	<% end %>
+</div>
 
 <h3>Other Tags</h3>
-<% @tags.each do |tag| %>
-	<p><%= tag.subject %></p>
-<% end %>
+<div class="other-tags">
+	<% @tags.each do |tag| %>
+		<span class='btn btn-success other-tag' href='<%= current_user.id %>' id='<%= tag.id %>'>
+			<%= tag.subject %> +
+		</span>
+	<% end %>
+</div>
 
 <h2>My Messages</h2>
 <% @messages.each do |message| %>
