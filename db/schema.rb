@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160123210044) do
     t.string   "body"
     t.date     "start_date"
     t.integer  "organization_id"
+    t.integer  "tag_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
