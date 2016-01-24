@@ -1,25 +1,35 @@
-<h3>My Tags</h3>
-<div class='my-tags'>
-	<% current_user.tags.each do |tag| %>
-		<span class='btn btn-default my-tag' href='<%= current_user.id %>' id='<%= tag.id %>'><%= tag.subject %> &times;</span>
-	<% end %>
-</div>
-
-<h3>Other Tags</h3>
-<div class="other-tags">
-	<% @tags.each do |tag| %>
-		<span class='btn btn-success other-tag' href='<%= current_user.id %>' id='<%= tag.id %>'>
-			<%= tag.subject %> +
-		</span>
-	<% end %>
-</div>
-
-<h2>My Messages</h2>
-<% @messages.each do |message| %>
-	<div>
-		<% message.tags.each do |tag| %>
-			<%= tag.subject %>
-		<% end %>
-		<%= message.body %>
+<div class="container-fluid">
+	<h3>My Tags</h3>
+	<div class="row">
+		<div class='my-tags'>
+			<% current_user.tags.each do |tag| %>
+				<span class='btn btn-default my-tag' href='<%= current_user.id %>' id='<%= tag.id %>'><%= tag.subject %> &times;</span>
+			<% end %>
+		</div>
 	</div>
-<% end %>
+
+	<h3>Other Tags</h3>
+	<div class="row">
+		<div class="other-tags">
+			<% @tags.each do |tag| %>
+				<span class='btn btn-success other-tag' href='<%= current_user.id %>' id='<%= tag.id %>'>
+					<%= tag.subject %> +
+				</span>
+			<% end %>
+		</div>
+	</div>
+
+	<h2>My Messages</h2>
+	<div class="row">
+		<% @messages.each do |message| %>
+			<div>
+				<% message.tags.each do |tag| %>
+					<%= tag.subject %>
+				<% end %>
+				<%= message.body %>
+			</div>
+		<% end %>
+	</div>
+	
+	</div>
+</div>
