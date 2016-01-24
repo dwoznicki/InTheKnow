@@ -6,7 +6,7 @@
 		</div>
 	</div>	
 	<h3>My Tags</h3>
-	<div class="row">
+	<!-- <div class="row"> -->
 		<div class='my-tags'>
 			<% current_user.tags.each do |tag| %>
 				<%= link_to user_remove_tag_path(current_user, tag_id: tag.id) do %>
@@ -14,10 +14,10 @@
 				<% end %>
 			<% end %>
 		</div>
-	</div>
+	<!-- </div> -->
 
 	<h3>Other Tags</h3>
-	<div class="row">
+	<!-- <div class="row"> -->
 		<div class="other-tags">
 			<% @tags.each do |tag| %>
 				<%= link_to user_add_tag_path(current_user, tag_id: tag.id) do %>
@@ -25,21 +25,21 @@
 				<% end %>
 			<% end %>
 		</div>
-	</div>
+	<!-- </div> -->
 
+	<div class="text-muted">
 	<h2>My Messages</h2>
-	<div class="row">
-		<div class="col-md-offset-3">
-			<% @messages.each do |message| %>
-				<div>
-					<% message.tags.each do |tag| %>
-						<%= tag.subject %>
-					<% end %>
-					<%= message.body %>
-				</div>
-			<% end %>
-		</div>
-	</div>
 
+	<!-- <div class="row"> -->
+		<% @messages.each do |message| %>
+			<div>
+				<% message.tags.each do |tag| %>
+					<%= tag.subject %>
+				<% end %>
+				<%= message.body %>
+			</div>
+		<% end %>
+	<!-- </div> -->
+		</div>
 	</div>
 </div>
