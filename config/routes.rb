@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     get 'remove_tag'
     resources :messages, only: [:index]
   end
-  resources :messages, only: [:new, :create]
-  resources :tags, only: [:new, :create]
+  resources :messages, only: [:new, :create, :index]
+  resources :tags, only: [:new, :create, :index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
