@@ -13,7 +13,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html {redirect_to tags_path}
+        format.html {redirect_to root_path}
       else
         format.html {render 'new'}
       end

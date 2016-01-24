@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     respond_to do |format|
       if @message.save
-        format.html {redirect_to messages_path}
+        format.html {redirect_to root_path}
       else
         format.html {render 'new'}
       end
