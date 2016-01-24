@@ -8,26 +8,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
+<nav class='navbar'>
   <ul>
     <% if user_signed_in? %>
     <li>
       <%= link_to "Profile", user_path(current_user) %>
-      <i></i>
     </li>
     <span>|</span>
     <li>Signed in as <%= current_user.username %>. Not you?</li>
     <span>|</span>
     <li>
       <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
-      <i></i>
     </li>
     <% else %>
     <li><%= link_to "Sign up", new_user_registration_path %></li>
     <span>|</span>
     <li>
       <%= link_to "Sign in", new_user_session_path %>
-      <i></i>
     </li>
     <% end %>
   </ul>
