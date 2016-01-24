@@ -1,4 +1,4 @@
-user1 = User.create(email: 'p@p.com', password: 'paulpaul')
+user1 = User.create(username: 'Paul', email: 'p@p.com', password: 'paulpaul')
 
 # Seed meetup data
 meetup_api = MeetupApi.new
@@ -30,4 +30,6 @@ category_ids.each do |id, category|
 	end
 end
 
-
+messages.each do |message|
+	
+end
