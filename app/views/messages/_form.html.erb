@@ -13,7 +13,7 @@
 	  <br>
 	  <br>
 	  <% @tags.each do |tag| %>
-			<span class='btn btn-success', onclick='addTagToMessage(<%= tag.id %>)'><%= tag.subject %> +</span>
+			<span class='btn btn-success' id="<%= tag.id %>", onclick='addTagToMessage(<%= tag.id %>)'><%= tag.subject %> +</span>
 	  <% end %>
 	  <br>
 	  <br>
@@ -23,5 +23,6 @@
 <script type="text/javascript">
 	var addTagToMessage = function(tagId) {
 		$('#hidden-tag-id').val(tagId)
+		$("#" + tagId).hide()
 	}
 </script>
